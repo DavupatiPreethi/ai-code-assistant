@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import os
 
 app = Flask(__name__)
 
@@ -96,7 +97,6 @@ textarea {
 pre {
   white-space: pre-wrap;
 }
-
 </style>
 </head>
 
@@ -139,7 +139,6 @@ pre {
 </div>
 
 <script>
-
 function showTab(tab){
   document.getElementById("editorTab").style.display = "none";
   document.getElementById("historyTab").style.display = "none";
@@ -172,13 +171,12 @@ async function loadHistory(){
   const list = document.getElementById("historyList");
   list.innerHTML = "";
 
-  data.reverse().forEach(item => {
+  data.slice().reverse().forEach(item => {
     const li = document.createElement("li");
     li.innerText = item.substring(0, 60) + "...";
     list.appendChild(li);
   });
 }
-
 </script>
 
 </body>
@@ -195,27 +193,38 @@ def analyze():
     result = ""
 
     if mode == "explain":
-        result = "📘 Explanation:\n"
+        result = "📘 Explanation:\\n"
         if "for" in code or "while" in code:
-            result += "- Loop used\n"
+            result += "• Loop used\\n"
         if "if" in code:
-            result += "- Conditional logic\n"
+            result += "• Conditional logic\\n"
         if "def" in code or "function" in code:
-            result += "- Function defined\n"
+            result += "• Function defined\\n"
 
     elif mode == "bugs":
-        result = "🐞 Bug Analysis:\n"
+        result = "🐞 Bug Analysis:\\n"
+
         if "range(len(" in code and "+ 1" in code:
-            result += "- Possible off-by-one error\n"
+            result += "❌ Bug: Off-by-one error detected\\n"
+            result += "💡 Fix: Remove +1 → use range(len(arr))\\n"
+
+        elif "while" in code and "i +=" not in code:
+            result += "❌ Bug: Possible infinite loop\\n"
+            result += "💡 Fix: Add increment (i += 1)\\n"
+
+        elif "/ 0" in code:
+            result += "❌ Bug: Division by zero\\n"
+            result += "💡 Fix: Avoid dividing by zero\\n"
+
         else:
-            result += "- No obvious bugs found\n"
+            result += "✅ No obvious bugs found\\n"
 
     elif mode == "optimize":
-        result = "⚡ Optimization:\n"
+        result = "⚡ Optimization:\\n"
         if "for" in code:
-            result += "- Consider using built-in functions\n"
+            result += "• Consider using built-in functions\\n"
         else:
-            result += "- Code is simple\n"
+            result += "• Code is simple\\n"
 
     history.append(code)
 
@@ -227,8 +236,6 @@ def get_history():
     return jsonify(history)
 
 # 🚀 Run
-import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
