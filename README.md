@@ -1,87 +1,80 @@
-# 🤖 AI Code Assistant 
+# 🤖 AI Code Assistant  
 
-A simple AI-based code analysis tool built using **Node.js**.
+A simple AI-based code analysis tool built using **Python (Flask)**.  
 This project simulates AI behavior by analyzing code patterns and generating structured outputs such as explanation, bug detection, and optimization suggestions.
 
 ---
 
-## 🚀 Features
+## 🚀 Features  
 
-* 📘 Code Explanation
-* 🐞 Bug Detection
-* 🚀 Optimization Suggestions
-* 🗂️ History storage (in-memory database)
-* 🌙 Dark-themed UI
-* ⚡ Single-file full-stack implementation
-
----
-
-## 🛠️ Tech Stack
-
-* Backend: Node.js, Express.js
-* Frontend: HTML, CSS, JavaScript
-* Database: In-memory array
+- 📘 Code Explanation  
+- 🐞 Bug Detection  
+- 🚀 Optimization Suggestions  
+- 🗂️ History storage (in-memory database)  
+- 🌙 Dark-themed UI  
+- ⚡ Single-file full-stack implementation  
 
 ---
 
-## 📂 Project Structure
+## 🛠️ Tech Stack  
 
-```
-app.js
-package.json
-package-lock.json
+- Backend: Python, Flask  
+- Frontend: HTML, CSS, JavaScript  
+- Database: In-memory list  
+
+---
+
+## 📂 Project Structure  
+
+
+app.py
 README.md
-```
+
 
 ---
 
-## ▶️ How to Run
+## ▶️ How to Run  
 
 1. Install dependencies:
 
-```
-npm install
-```
+
+pip install flask
+
 
 2. Start the server:
 
-```
-node app.js
-```
+
+python app.py
+
 
 3. Open in browser:
 
-```
-http://localhost:3000
-```
+
+http://127.0.0.1:5000
+
 
 ---
 
-## 🧠 How It Works
+## 🧠 How It Works  
 
-* The system analyzes code using pattern matching
-* Detects loops, functions, and conditions
-* Generates structured responses
-* Provides suggestions for improvement
-
----
-
-## 🎯 Purpose
-
-* Demonstrates basic AI concepts using rule-based logic
-* Shows full-stack development in a single file
-* Useful for academic mini-projects
+- The system analyzes code using pattern matching  
+- Detects loops, functions, and conditions  
+- Identifies simple bugs (e.g., off-by-one errors)  
+- Generates structured responses  
+- Stores user input in a temporary database  
 
 ---
 
-## ⚠️ Note
+## 🎯 Purpose  
 
-This project does not use real AI APIs.
-It simulates AI behavior using simple logic for learning purposes.
+- Demonstrates basic AI concepts using rule-based logic  
+- Shows full-stack development in a single file using Python  
+- Useful for academic mini-projects
 
----
+  ---
 
-## 👩‍💻 Author
+## 👩‍💻 Author  
 
-Preethi
-GitHub: https://github.com/DavupatiPreethi
+Preethi  
+shivamani
+GitHub: https://github.com/DavupatiPreethi  
